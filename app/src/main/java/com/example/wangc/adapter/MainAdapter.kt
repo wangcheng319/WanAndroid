@@ -26,19 +26,17 @@ class MainAdapter (val mContext:Context, val mDatas: List<BannerBean.Data>) : Re
     }
 
     override fun onBindViewHolder(holder:MainAdapter.ViewHolder, position: Int) {
-        holder.textView?.text = mDatas[position].title
-        holder.imageView?.let {
+        holder.mTextView.text = mDatas[position].title
         Glide.with(mContext)
                 .load(mDatas[position].imagePath)
-                .into(it)
-        }
+                .into(holder.imageView)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
-        var textView:TextView? = null
-        var imageView:ImageView? = null
+        var mTextView:TextView
+        var imageView:ImageView
         init {
-            textView = itemView?.findViewById(R.id.text)
+            mTextView = itemView.findViewById(R.id.text)
             imageView = itemView.findViewById(R.id.imageView)
         }
     }
