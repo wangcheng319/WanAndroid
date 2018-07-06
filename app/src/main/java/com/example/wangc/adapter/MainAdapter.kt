@@ -15,20 +15,20 @@ import com.example.wangc.wanandroid.R
  * Created by wangc on 2018/7/6
  * E-MAIL:274281610@QQ.COM
  */
-class MainAdapter (val mContext:Context, val mDatas: List<BannerBean.Data>?) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter (val mContext:Context, val mDatas: List<BannerBean.Data>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainAdapter.ViewHolder{
         return ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.main_iten,parent,false))
     }
 
     override fun getItemCount(): Int {
-        return mDatas?.size!!
+        return mDatas.size
     }
 
     override fun onBindViewHolder(holder:MainAdapter.ViewHolder, position: Int) {
-        holder.textView?.text = mDatas!![position].title
+        holder.textView?.text = mDatas[position].title
         holder.imageView?.let {
-            Glide.with(mContext)
+        Glide.with(mContext)
                 .load(mDatas[position].imagePath)
                 .into(it)
         }
